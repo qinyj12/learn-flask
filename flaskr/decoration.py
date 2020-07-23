@@ -1,15 +1,9 @@
-from datetime import date
 from functools import wraps
-import sys, datetime
+import sys
 
-from flask import request, abort
-
-def ban_get(func):
+def ensure_running(func):
     @wraps(func)
     def inner():
-        print(datetime.datetime.now(),file=sys.stderr)
-        if request.method != 'GET':
-            return func()
-        else:
-            return '123'
+        print('running: ' + func.__name__, file=sys.stderr)
+        return func()
     return inner
