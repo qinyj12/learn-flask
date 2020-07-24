@@ -3,7 +3,7 @@ import sys
 
 def ensure_running(func):
     @wraps(func)
-    def inner():
+    def inner(*args, **kargs):
         print('running: ' + func.__name__, file=sys.stderr)
-        return func()
+        return func(*args, **kargs)
     return inner
