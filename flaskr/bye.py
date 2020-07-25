@@ -12,6 +12,6 @@ def bye():
     else:
         return '2'
 
-def test(res):
-    return res
+def test():
+    return g.temp
     # return g.temp
