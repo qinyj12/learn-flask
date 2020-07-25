@@ -28,12 +28,13 @@ def create_app(test_config=None):
     except OSError:
         pass
     
-    from . import bye, date, hello, lang
+    from . import bye, date, hello, lang, user
     from .error import page_not_found
     app.register_blueprint(bye.app_bye)
     app.register_blueprint(date.app)
     app.register_blueprint(hello.app_hello)
     app.register_error_handler(404,page_not_found)
     app.register_blueprint(lang.lang_bp)
+    app.register_blueprint(user.app)
 
     return app

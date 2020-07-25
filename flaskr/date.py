@@ -1,7 +1,6 @@
 from flask import Blueprint, url_for
 
 app = Blueprint('dateNow', __name__)
-@app.route('/date')
-def index():
-    return url_for('hello')
-    # return 'Date Now!'
+@app.route('/date/<dater_name>')
+def index(dater_name):
+    return 'let\'s date now!! %s' % dater_name
