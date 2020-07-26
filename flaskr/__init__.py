@@ -28,7 +28,7 @@ def create_app(test_config=None):
     except OSError:
         pass
     
-    from . import bye, date, hello, lang, user
+    from . import bye, date, hello, lang, user, upload, cache
     from .error import page_not_found
     app.register_blueprint(bye.app_bye)
     app.register_blueprint(date.app)
@@ -36,5 +36,9 @@ def create_app(test_config=None):
     app.register_error_handler(404,page_not_found)
     app.register_blueprint(lang.lang_bp)
     app.register_blueprint(user.app)
-
+    app.register_blueprint(upload.app)
+    UPLOAD_FOLDER = './'
+    app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+    app.register_blueprint(cache.app)
+    
     return app
