@@ -28,7 +28,7 @@ def create_app(test_config=None):
     except OSError:
         pass
     
-    from . import bye, date, hello, lang, user, upload, cache
+    from . import bye, date, hello, lang, user, upload, mail
     from .error import page_not_found
     app.register_blueprint(bye.app_bye)
     app.register_blueprint(date.app)
@@ -39,6 +39,10 @@ def create_app(test_config=None):
     app.register_blueprint(upload.app)
     UPLOAD_FOLDER = './'
     app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-    app.register_blueprint(cache.app)
+
+    # 因为werkzeug.contrib似乎需要降级，所以先不管了
+    # app.register_blueprint(cache.app)
     
+    app.register_blueprint(mail.app)
+
     return app
