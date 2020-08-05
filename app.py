@@ -1,5 +1,5 @@
-from flaskr import create_app
+from factories import create_app
 
 app = create_app()
 
-app.run(host='0.0.0.0',port='5000',debug=True)
+app.run(host='0.0.0.0',port='5000')
