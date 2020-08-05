@@ -5,10 +5,10 @@ app = Blueprint('mail', __name__)
 
 @app.route('/mail')
 def mail():
-    current_app.config['MAIL_SERVER'] = 'smtp.sendcloud.net' # 以QQ邮箱为例
+    current_app.config['MAIL_SERVER'] = 'smtp.qq.com' # 以QQ邮箱为例
     current_app.config['MAIL_PORT'] = 587
-    current_app.config['MAIL_USERNAME'] = 'qinyj12_20200803'
-    current_app.config['MAIL_PASSWORD'] = '69ZQiQemUofEsrNS'
+    current_app.config['MAIL_USERNAME'] = '1562555013@qq.com'
+    current_app.config['MAIL_PASSWORD'] = 'agruhtsnobwlhbab'
 
     mail = Mail(current_app)
 
