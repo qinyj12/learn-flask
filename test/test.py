@@ -1,3 +1,3 @@
-import time
+a = {'a':123}
 
-print(time.strftime('%H:%M:%S'))
+print('a' in a)

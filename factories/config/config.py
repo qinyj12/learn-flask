@@ -6,3 +6,5 @@ UPLOAD_FOLDER = 'uploads/'
 CACHE_TYPE = "simple"
 # 缓存默认的过期时间
 CACHE_DEFAULT_TIMEOUT = 5
+# session的过期时间，整数表示秒，也可以用datetime.timedelta对象
+PERMANENT_SESSION_LIFETIME = 5
