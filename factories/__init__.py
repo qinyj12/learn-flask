@@ -33,7 +33,9 @@ def create_app(test_config=None):
     cache.init_app(app)
 
     # 引入视图
-    from instance import bye, date, hello, lang, user, upload, mail, error, time_cache, login
+    from instance import bye, date, hello, lang, user, upload,\
+         mail, error, time_cache, login, flash, error
+
     app.register_blueprint(bye.app_bye)
     app.register_blueprint(date.app)
     app.register_blueprint(hello.app_hello)
@@ -43,6 +45,8 @@ def create_app(test_config=None):
     app.register_blueprint(mail.app)
     app.register_blueprint(time_cache.app)
     app.register_blueprint(login.app)
+    app.register_blueprint(flash.app)
+    app.register_blueprint(error.app)
     app.register_error_handler(404, error.page_not_found)
 
     return app

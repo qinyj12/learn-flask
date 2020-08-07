@@ -9,7 +9,7 @@ CACHE_DEFAULT_TIMEOUT = 5
 # session的秘钥
 # SECRET_KEY = 'abc'
 # session的过期时间，整数表示秒，也可以用datetime.timedelta对象
-PERMANENT_SESSION_LIFETIME = 60
+PERMANENT_SESSION_LIFETIME = 5
 # 这是session跨域要设置的，有的浏览器用不着
 SESSION_COOKIE_SECURE = True
 # session的跨域

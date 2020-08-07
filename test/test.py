@@ -1,3 +1,2 @@
-a = {'a':123}
-
-print('a' in a)
+a = (x for x in range(10))
+print(a)

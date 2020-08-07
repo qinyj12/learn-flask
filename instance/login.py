@@ -8,11 +8,8 @@ app = Blueprint('login', __name__)
 def login():
     if request.method == 'POST':
         session['user'] = request.form['username']
-        # g.user = request.form['username']
-        return redirect(url_for('login.admin'))
-    session['user'] = 'qinyj12'
-    import sys
-    print(session['user'], file = sys.stderr)
+        # url_for中的next对象会存在于request.args，比如https://127.0.0.1:5000/admin?next=Hello
+        return redirect(url_for('login.admin', next='Hello'))
     return render_template('login.html')
 
 def ensure_login(func):
@@ -20,17 +17,14 @@ def ensure_login(func):
     def inner(*args, **kargs):
         # 判断g中存不存在'user'这个键
         if 'user' in session:
-            import sys
-            print('yes', file = sys.stderr)
             g.user = session['user']
             return func(*args, **kargs)
         else:
-            import sys
-            print('no', file = sys.stderr)
             return redirect(url_for('.login'))
     return inner
 
 @app.route('/admin')
-# @ensure_login
+@ensure_login
 def admin():
-    return session['user']
+    # request.args.get('next')是从url_for中的next拿到的值，比如url_for('login.admin', next='Hello')
+    return request.args.get('next') + ' ' + g.user
