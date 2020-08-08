@@ -15,7 +15,11 @@ def create_app(test_config=None):
     # 如果test_config=None，意即没有独立的配置文件。
     if test_config is None:
         # 再次尝试加载配置文件（项目根目录是instance/），如果silent是True，则即使不存在也不会报错
-        app.config.from_pyfile('../factories/config/config.py', silent=False)
+        # app.config.from_pyfile('../factories/config/config.py', silent=False)
+        # 这里采用from_object方法，加silent会报错
+        from .config import config
+        app.config.from_object(config.HomeCom)
+        # app.config.from_object(config.WorkCom)
     else:
         # 如果test_config != None，意即有独立的配置文件。
         # 只要在生产环境中改掉test_config一个值就好了，不用再一处一处修改
@@ -34,7 +38,7 @@ def create_app(test_config=None):
 
     # 引入视图
     from instance import bye, date, hello, lang, user, upload,\
-         mail, error, time_cache, login, flash, error
+         mail, error, time_cache, login, flash, error, generator
 
     app.register_blueprint(bye.app_bye)
     app.register_blueprint(date.app)
@@ -47,6 +51,7 @@ def create_app(test_config=None):
     app.register_blueprint(login.app)
     app.register_blueprint(flash.app)
     app.register_blueprint(error.app)
+    app.register_blueprint(generator.app)
     app.register_error_handler(404, error.page_not_found)
 
     return app

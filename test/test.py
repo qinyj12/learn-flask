@@ -1,2 +1,7 @@
-a = (x for x in range(10))
-print(a)
+# import os
+
+# os.chdir('./test')
+
+# from son import a
+# a.hello()
+

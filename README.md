@@ -1,3 +1,3 @@
 ## I'm just learing flask deeply.
-看到这里了：https://dormousehole.readthedocs.io/en/latest/patterns/streaming.html
-要先熟悉一下生成器的用法
+看到这里了：https://flask-restful.readthedocs.io/en/latest/quickstart.html
+最后看一下flask-restful的教程，然后这一期的学习就结束了
