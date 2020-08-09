@@ -1,8 +1,6 @@
 from functools import wraps
 import sys
 
-from flask.helpers import url_for
-
 def ensure_running(func):
     @wraps(func)
     def inner(*args, **kargs):
