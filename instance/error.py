@@ -14,11 +14,17 @@ def internal_server_error(e):
 
 app = Blueprint('error_test', __name__, url_prefix = '/error')
 
+# 这是用来测试error的
 @app.route('/404')
 def index():
     abort(404)
 
-@app.route('500')
+@app.route('/500')
 def index2():
     # description的值就是自定义的异常
     abort(500, description = '自定义错误：500')
+
+# 再定义一个不使用description的视图
+@app.route('/5002')
+def index3():
+    abort(500)

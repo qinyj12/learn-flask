@@ -56,5 +56,6 @@ def create_app(test_config=None):
     app.register_blueprint(restful.app)
     app.register_blueprint(restful_ep.app)
     app.register_error_handler(404, error.page_not_found)
+    app.register_error_handler(500, error.internal_server_error)
 
     return app
