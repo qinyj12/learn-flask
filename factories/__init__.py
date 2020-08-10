@@ -39,7 +39,7 @@ def create_app(test_config=None):
     # 引入视图
     from instance import bye, date, hello, lang, user, upload,\
          mail, error, time_cache, login, flash, error, generator,\
-         restful, restful_ep
+         restful, restful_ep, restful_df
 
     app.register_blueprint(bye.app_bye)
     app.register_blueprint(date.app)
@@ -55,6 +55,7 @@ def create_app(test_config=None):
     app.register_blueprint(generator.app)
     app.register_blueprint(restful.app)
     app.register_blueprint(restful_ep.app)
+    app.register_blueprint(restful_df.app)
     app.register_error_handler(404, error.page_not_found)
     app.register_error_handler(500, error.internal_server_error)
 

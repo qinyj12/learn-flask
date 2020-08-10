@@ -1,7 +1,4 @@
-# import os
+def demo(value):
+    return '1' if value in {'male', 'female'} else '0'
 
-# os.chdir('./test')
-
-# from son import a
-# a.hello()
-
+print(demo('male'))
