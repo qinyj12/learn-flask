@@ -18,8 +18,8 @@ def create_app(test_config=None):
         # app.config.from_pyfile('../factories/config/config.py', silent=False)
         # 这里采用from_object方法，加silent会报错
         from .config import config
-        app.config.from_object(config.HomeCom)
-        # app.config.from_object(config.WorkCom)
+        # app.config.from_object(config.HomeCom)
+        app.config.from_object(config.WorkCom)
     else:
         # 如果test_config != None，意即有独立的配置文件。
         # 只要在生产环境中改掉test_config一个值就好了，不用再一处一处修改

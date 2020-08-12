@@ -1,4 +1,5 @@
-from flask import Blueprint, g, url_for, current_app
+from flask import Blueprint, g, url_for
+from .decoration import ensure_running
 
 lang_bp = Blueprint('lang', __name__, url_prefix='/lang/<lang_code>')
 
@@ -16,10 +17,13 @@ def add_language_code(endpoint, values):
     values.setdefault('lang_code', g.lang_code)
 
 @lang_bp.route('/')
+@ensure_running
 def index():
     return '<h1>Index of language %s</h1>' % g.lang_code
 
+
 @lang_bp.route('/path')
+@ensure_running
 def path():
     # 因为url_defaults的存在，所以不用再写成url_for('.index', lang_code=g.lang_code)
     return '<h1>Language base URL is %s</h1>' % url_for('.index')

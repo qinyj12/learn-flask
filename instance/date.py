@@ -1,4 +1,4 @@
-from flask import Blueprint, url_for
+from flask import Blueprint
 
 app = Blueprint('dateNow', __name__)
 @app.route('/date/<dater_name>')

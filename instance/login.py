@@ -8,8 +8,8 @@ app = Blueprint('login', __name__)
 def login():
     if request.method == 'POST':
         session['user'] = request.form['username']
-        # url_for中的next对象会存在于request.args，比如https://127.0.0.1:5000/admin?next=Hello
-        return redirect(url_for('login.admin', next='Hello'))
+        # url_for中的next对象会存在于request.args，比如https://127.0.0.1:5000/admin?next=Hello&haha=bye
+        return redirect(url_for('login.admin', next='Hello', haha='bye'))
     return render_template('login.html')
 
 def ensure_login(func):
