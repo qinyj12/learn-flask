@@ -20,7 +20,7 @@ class Todo(Resource):
     @marshal_with(resource_fields)
     def get(self, **kwargs):
         return TodoDao(todo_id='my_todo', task='Remember the milk')
-
+api.add_resource(Todo, '/todo')
 # 这是一个自定义fields的案例
 # 先定义一个gender类，要求接收的参数不是male就是female，否则调用abort
 class Gender(fields.Raw):
