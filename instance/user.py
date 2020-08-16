@@ -1,4 +1,4 @@
-from flask import Blueprint, g, url_for, redirect
+from flask import Blueprint, g, url_for, redirect, request
 
 app = Blueprint('user', __name__, url_prefix='/user/<user_name>')
 
@@ -11,7 +11,7 @@ def get_user_name_from_url(endpoint, view_args):
 
 @app.url_defaults
 def add_user_name(endpoint, values):
-    values.setdefault('dater_name', g.user_name)
+    values.setdefault('user_name', g.user_name)
 
 @app.route('/')
 def index():
@@ -19,4 +19,4 @@ def index():
 
 @app.route('/date')
 def date():
-    return redirect(url_for('dateNow.index', dater_name=g.user_name))
+    return url_for('dateNow.index', dater_name = g.user_name)

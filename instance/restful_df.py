@@ -7,8 +7,12 @@ api = Api(app)
 
 # 这是官方文档给的案例
 resource_fields = {
+    # 这里虽然在资源路由里传了参（todo_id），格式化数据里却并没有这个参数，但并不会报错
+    # 'todo_id': fields.String,
     'task': fields.String,
-    'uri': fields.Url('restful.todo_ep')
+    'uri': fields.Url('restful.todo_ep'),
+    # 这里虽然在格式化数据里定义了（rest），但资源路由里并没有传参，最终response时会返回null
+    'rest': fields.String
 }
 class TodoDao(object):
     def __init__(self, todo_id, task):
@@ -65,7 +69,7 @@ class User(Resource):
         parser.add_argument('gender', choices = ('male', 'female'), help = 'Bad choice: {error_msg}')
         parser.add_argument('nickname', type = str)
         args = parser.parse_args()
-        # 传参给中间件
-        return QueryUser(id = args['id'], gender = args['gender'], nickname = args['nickname'])
+        # 传参给中间件。如果前端参数为空（即没有相应的参数），那args['xxx']的值就是null。如果中间件没有定义默认值，也没有接到资源路由传来的参数，那会报错的。
+        return QueryUser(id = args['id'], gender = args['gender'], nickname = args['nickname'], name = args['name'])
 
 api.add_resource(User, '/')

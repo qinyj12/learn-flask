@@ -1,5 +1,5 @@
 import os
-from flask import Flask, flash, request, redirect, url_for, Blueprint, current_app
+from flask import flash, request, redirect, url_for, Blueprint, current_app
 from werkzeug.utils import secure_filename
 
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}

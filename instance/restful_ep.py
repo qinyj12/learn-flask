@@ -1,6 +1,5 @@
 # 这是一个用来测试restful中的endpoint的视图函数
 from flask import Blueprint, url_for, redirect
-from werkzeug.wrappers import Response
 
 app = Blueprint('restful_ep', __name__, url_prefix='/restep')
 
